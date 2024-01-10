@@ -1,11 +1,15 @@
-import pandas as pd
-
-from source.entity.config_entity import TrainingPipelineConfig
-
-
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-    train_pipeline_config_obj = TrainingPipelineConfig()
+    global_timestamp = generate_global_timestamp()
 
-    print(train_pipeline_config_obj.__dict__)
+    setup_logger(global_timestamp)
+    logging.info("logger timestamp setup complete")
+
+    # train_pipeline_config_obj = TrainingPipelineConfig(global_timestamp)
+    # print(train_pipeline_config_obj.__dict__)
+
+    logging.info("training pipeline config created")
+
+
+    train_pipeline_obj = TrainPipeline(global_timestamp)
+    train_pipeline_obj.run_train_pipeline()
